@@ -1,0 +1,85 @@
+current_inv_data = {
+    25205: ['Battery voltage', 0.1, 'V'],
+    25206: ['Inverter voltage', 0.1, 'V'],
+    25207: ['Grid voltage', 0.1, 'V'],
+    25208: ['BUS voltage', 0.1, 'V'],
+    25209: ['Control current', 0.1, 'A'],
+    25210: ['Inverter current', 0.1, 'A'],
+    25211: ['Grid current', 0.1, 'A'],
+    25212: ['Load current', 0.1, 'A'],
+    25213: ['PInverter', 1, 'W'],
+    25214: ['PGrid', 1, 'W'],
+    25215: ['PLoad', 1, 'W'],
+    25216: ['Load percent', 1, '%'],
+    25217: ['SInverter', 1, 'VA'],
+    25218: ['SGrid', 1, 'VA'],
+    25219: ['Sload', 1, 'VA'],
+    25221: ['Qinverter', 1, 'VA'],
+    25222: ['Qgrid', 1, 'VA'],
+    25223: ['Qload', 1, 'VA'],
+    25225: ['Inverter frequency', 0.01, 'Hz'],
+    25226: ['Grid frequency', 0.01, 'Hz'],
+    25233: ['AC radiator temperature', 1, 'C'],
+    25234: ['Transformer temperature', 1, 'C'],
+    25235: ['DC radiator temperature', 1, 'C'],
+    25273: ['Batt power', 1, 'W'],
+    25274: ['Batt current', 1, 'A'],
+    15205: ['PV voltage', 0.1, 'V'],
+    15207: ['Charger current', 0.1, 'A'],
+    15208: ['Charger power', 1, 'W']
+                      }
+inverters_errors = {
+    25261: ['Error message 1', ''],
+    25262: ['Error message 2', ''],
+    5263: ['Error message 3', ''],
+    25265: ['Warning message 1', ''],
+    25266: ['Warning message 2', ''],
+    15213: ['Error message, Refer to frame Charger Error message 1', ''],
+    15214: ['Warning message, Refer to frame Charger Warning message 1', ''],
+}
+
+inverters_accumulated_data = {
+    25245: ['Accumulated charger power high', 1000, 'KWH'],
+    25246: ['Accumulated charger power low', 0.1, 'KWH'],
+    25247: ['Accumulated discharger power high', 1000, 'KWH'],
+    25248: ['Accumulated discharger power low', 0.1, 'KWH'],
+    25249: ['Accumulated buy power high', 1000, 'KWH'],
+    25250: ['Accumulated buy power low', 0.1, 'KWH'],
+    25251: ['Accumulated sell power high', 1000, 'KWH'],
+    25252: ['Accumulated sell power low', 0.1, 'KWH'],
+    25253: ['Accumulated load power high', 1000, 'KWH'],
+    25254: ['Accumulated load power low', 0.1, 'KWH'],
+    25255: ['Accumulated self_use power high', 1000, 'KWH'],
+    25256: ['Accumulated self_use power low', 0.1, 'KWH'],
+    25257: ['Accumulated PV_sell power high', 1000, 'KWH'],
+    25258: ['Accumulated PV_sell power low', 0.1, 'KWH'],
+    25259: ['Accumulated grid_charger power high', 1000, 'KWH'],
+    25260: ['Accumulated  grid_charger power low', 0.1, 'KWH'],
+    15217: ['Accumulated PV power high', 1000, 'KWH'],
+    15218: ['Accumulated PV power low', 0.1, 'KWH'],
+    15219: ['Accumulated day', 1, 'day'],
+    15220: ['Accumulated hour', 1, 'hour'],
+    15221: ['Accumulated minute', 1, 'minute']
+}
+
+inverters_base_config = {
+    25202: ['AC voltage grade', 1, 'V'],
+    25203: ['Rated power(VA)', 1, 'VA'],
+    25275: ['Batt voltage grade', 1, 'V'],
+    25277: ['Rated power(W)', 1, 'W'],
+    15215: ['BattVol Grade', 1, 'V'],
+    15216: ['Rated Current', 0.1, 'A']
+}
+
+inverters_param_states = {
+    25201: ['work state', {0: 'PowerOn', 1: 'SelfTest', 2: 'OffGrid', 3: 'Grid-Tie', 4: 'ByPass', 5: 'Stop', 6: 'Grid charging'}],
+    25237: ['Inverter relay state', {0: 'Disconnect', 1: 'Connect'}],
+    25238: ['Grid relay state', {0: 'Disconnect', 1: 'Connect'}],
+    25239: ['Load relay state', {0: 'Disconnect', 1: 'Connect'}],
+    25240: ['N_Line relay state', {0: 'Disconnect', 1: 'Connect'}],
+    25241: ['DC relay state', {0: 'Disconnect', 1: 'Connect'}],
+    25242: ['Earth relay state', {0: 'Disconnect', 1: 'Connect'}],
+    15201: ['Charger workstate', {0: 'Initialization mode', 1: 'Selftest Mode', 2: 'Work Mode', 3: 'Stop Mode'}],
+    15202: ['Mppt state', {0: 'Stop', 1: 'MPPT', 2: 'Current limiting'}],
+    15203: ['charging state', {0: 'Stop', 1: 'Absorb charge', 2: 'Float charge', 3: 'EQ charge'}],
+}
