@@ -22,8 +22,8 @@ current_inv_data = {
     25233: ['AC radiator temperature', 1, 'C'],
     25234: ['Transformer temperature', 1, 'C'],
     25235: ['DC radiator temperature', 1, 'C'],
-    25273: ['Batt power', 1, 'W'],
-    25274: ['Batt current', 1, 'A'],
+    # 25273: ['Batt power', 1, 'W'],
+    # 25274: ['Batt current', 1, 'A'],
     15205: ['PV voltage', 0.1, 'V'],
     15207: ['Charger current', 0.1, 'A'],
     15208: ['Charger power', 1, 'W']

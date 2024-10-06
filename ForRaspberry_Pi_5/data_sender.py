@@ -1,21 +1,42 @@
+import json
 import requests
-import os
 from data_logger import rlog
 import time
 from threading import Thread, Lock
 from data_collector import DataCollector
+import glob
 
 lock = Lock()
 
 class DataSender:
 	def __init__(self):
-		self.url = os.getenv('DJANGO_SERVER_URL')
-		self.data_collector = DataCollector()
+		self.api_key = 'ANIwBWis.FMgpOhrGLCSBnGPk0YT7rUceTMlI64j4'
+		self.headers = {
+			'Authorization': f'Api-Key {self.api_key}',
+		}
+		self.url = 'http://192.168.72.150:8000/api/data_collector'
+		self.usb_port = ''
+		self.get_usb_port()
+		self.data_collector = DataCollector(port=self.usb_port)
 
 	def send(self, data):
-		response = requests.post(self.url, json=data)
+		response = requests.post(self.url, json=data, headers=self.headers)
 		rlog.info(f'Response status: {response.status_code}, Response text: {response.text}')
-		response.raise_for_status()  # Перевіряє, чи статус відповіді 200
+		response.raise_for_status()
+	
+	def get_usb_port(self):
+		try:
+			ports = glob.glob('/dev/ttyUSB*')
+			
+			if ports:
+				print(f"Found USB ports: {ports}")
+				self.usb_port = ports[0]
+				return ports[0]
+			else:
+				raise Exception("No USB ports found.")
+		except Exception as e:
+			print(f"Failed to get USB port: {e}")
+			return None
 	
 	def collect_data_thread(self):
 		while True:
@@ -26,7 +47,7 @@ class DataSender:
 		collect_data_thread_th.start()
 		while True:
 			try:
-				time.sleep(60)
+				time.sleep(300)
 				with lock:
 					avg_inv_data = self.data_collector.avg_data()
 					inverters_accumulated_data = self.data_collector.inverters_accumulated_data
@@ -41,6 +62,8 @@ class DataSender:
 						'inverters_errors': inverters_errors
 					}
 					rlog.info(f'----------Data to send-----------\n{data}')
+					with open('data_to_send.json', 'w') as file:
+						file.write(json.dumps(data, indent=4))
 					self.send(data)
 			except Exception as err:
 				rlog.error(err)
